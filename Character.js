@@ -1,10 +1,18 @@
 import React from "react";
-
+import { useHistory } from "react-router-dom";
 
 function Character({ character }) {
+  const history = useHistory();
+
+  const handleTitleClick = () => {
+    history.push(`/character/${character.id}`);
+  };
+
   return (
     <div key={character.id}>
-      <h2>{character.name}</h2>
+      <h2 onClick={handleTitleClick} style={{ cursor: "pointer", color: "blue" }}>
+        {character.name}
+      </h2>
       <img
         src={`${character.thumbnail.path}/portrait_incredible.${character.thumbnail.extension}`}
         alt={character.name}
